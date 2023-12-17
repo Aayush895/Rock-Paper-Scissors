@@ -54,7 +54,7 @@ main {
   margin-bottom: 1rem;
 }
 
-#rock-paper-scissors {
+#parent-container {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-gap: 5rem;
@@ -73,6 +73,7 @@ main {
   border-radius: 50%;
   background-color: white;
   padding: 3.5rem;
+  cursor: pointer;
 }
 
 #rock {
@@ -83,7 +84,7 @@ main {
   border-color: #ffa943;
 }
 
-#scissor {
+#scissors {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,4 +96,55 @@ main {
   border-radius: 50%;
   background-color: white;
   padding: 3.5rem;
+  cursor: pointer;
+}
+
+#result-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#human-choice > h4 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#pc-choice > h4 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#declared-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#declared-result > h2 {
+  padding: 1rem 2rem;
+  width: 80%;
+  text-align: center;
+}
+
+#declared-result > button {
+  padding: 10px 20px;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.rock,.scissors,.paper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 3.5rem;
+  cursor: pointer;
 }
