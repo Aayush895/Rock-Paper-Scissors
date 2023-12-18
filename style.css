@@ -100,19 +100,16 @@ main {
 }
 
 #result-container {
-  display: flex;
+  display: none;
   justify-content: space-evenly;
   align-items: center;
 }
 
-#human-choice > h4 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
+#human-choice > h4,
 #pc-choice > h4 {
   margin-bottom: 1rem;
   text-align: center;
+  color: white;
 }
 
 #declared-result {
@@ -120,6 +117,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 #declared-result > h2 {
@@ -136,7 +134,9 @@ main {
   border-radius: 0.3rem;
 }
 
-.rock,.scissors,.paper {
+.rock,
+.scissors,
+.paper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,4 +147,16 @@ main {
   background-color: white;
   padding: 3.5rem;
   cursor: pointer;
+}
+
+.rock {
+  border-color: #0074b6;
+}
+
+.paper {
+  border-color: #ffa943;
+}
+
+.scissors {
+  border-color: #bd00ff;
 }
