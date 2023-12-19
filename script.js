@@ -9,7 +9,16 @@ const rockChoice = document.querySelector('.rock')
 const paperChoice = document.querySelector('.paper')
 const scissorChoice = document.querySelector('.scissors')
 const winOrlose = declaredResult.querySelector('h2').querySelector('span')
+const nextButton = document.getElementById('next')
+const humanScoreDisplay = document
+  .querySelector('.your-score')
+  .querySelector('h1')
+const pcScoreDisplay = document
+  .querySelector('.computer-score')
+  .querySelector('h1')
 
+let humanScore = 0
+let computerScore = 0
 const elementArr = []
 
 for (const child of parentContainer.children) {
@@ -46,40 +55,52 @@ function getCompChoice(e) {
     elementArr[randomElement] == 'scissors'
   ) {
     winOrlose.innerText = 'WIN'
-    console.log('Human won')
+    humanScore++
+    humanScoreDisplay.innerText = `${humanScore}`
+    nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'rock' &&
     elementArr[randomElement] == 'paper'
   ) {
     winOrlose.innerText = 'LOST'
-    console.log('PC won')
+    computerScore++
+    pcScoreDisplay.innerText = `${computerScore}`
+    nextButton.style.display = 'none'
   } else if (
     e.composedPath()[1].id == 'paper' &&
     elementArr[randomElement] == 'scissors'
   ) {
     winOrlose.innerText = 'LOST'
-    console.log('PC won')
+    computerScore++
+    pcScoreDisplay.innerText = `${computerScore}`
+    nextButton.style.display = 'none'
   } else if (
     e.composedPath()[1].id == 'paper' &&
     elementArr[randomElement] == 'rock'
   ) {
     winOrlose.innerText = 'WIN'
-    console.log('Human won')
+    humanScore++
+    humanScoreDisplay.innerText = `${humanScore}`
+    nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'scissors' &&
     elementArr[randomElement] == 'paper'
   ) {
     winOrlose.innerText = 'WIN'
-    console.log('Human won')
+    humanScore++
+    humanScoreDisplay.innerText = `${humanScore}`
+    nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'scissors' &&
     elementArr[randomElement] == 'rock'
   ) {
     winOrlose.innerText = 'LOST'
-    console.log('PC won')
+    computerScore++
+    pcScoreDisplay.innerText = `${computerScore}`
+    nextButton.style.display = 'none'
   } else {
     winOrlose.innerText = 'TIED'
-    console.log('Tied')
+    nextButton.style.display = 'none'
   }
 }
 
@@ -99,14 +120,14 @@ playAgain.addEventListener('click', resetPlayScreen)
  *
  * Reset the screen when clicked on 'play again' button --> Done
  * On clicking the choices, js should display who won and who lost --> Done
- * On clicking the choices, js should update the counter if human won or if computer won --> TODO
- * On clicking the rules button user should be able to view the rules and remove it if clicked on the cross button
- * If user wins, then a next button should be visible beside the rules button otherwise it should be invisible
+ * On clicking the choices, js should update the counter if human won or if computer won --> Done
+ * On clicking the rules button user should be able to view the rules and remove it if clicked on the cross button --> In progress
+ * If user wins, then a next button should be visible beside the rules button otherwise it should be invisible --> Done
  * If user clicks on the next button then they should be redirected towards a victory page
  *
  * CSS stuff:
  *
- * Have to add the rules and next button.
+ * Have to add the rules and next button. --> Done
  * Have to create a victory page with some basic animations.
  *
  * Menial stuff:
