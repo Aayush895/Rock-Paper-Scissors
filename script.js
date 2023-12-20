@@ -1,4 +1,5 @@
 const parentContainer = document.getElementById('parent-container')
+const scoreSection = document.getElementById('score-section')
 const resultContainer = document.getElementById('result-container')
 const rock = document.getElementById('rock').querySelector('img')
 const paper = document.getElementById('paper').querySelector('img')
@@ -10,12 +11,18 @@ const paperChoice = document.querySelector('.paper')
 const scissorChoice = document.querySelector('.scissors')
 const winOrlose = declaredResult.querySelector('h2').querySelector('span')
 const nextButton = document.getElementById('next')
+const rulesButton = document.getElementById('rules')
+const crossButton = document.querySelector('.cross')
+const rulesContainer = document.getElementById('rules-container')
 const humanScoreDisplay = document
   .querySelector('.your-score')
   .querySelector('h1')
 const pcScoreDisplay = document
   .querySelector('.computer-score')
   .querySelector('h1')
+
+const victoryPage = document.getElementById('victory-page')
+const resetButton = document.getElementById('reset')
 
 let humanScore = 0
 let computerScore = 0
@@ -109,11 +116,24 @@ function resetPlayScreen() {
   resultContainer.style.display = 'none'
 }
 
+function showWinnerPage() {
+  window.location.href = 'index.html'
+}
+
 rock.addEventListener('click', getCompChoice)
 paper.addEventListener('click', getCompChoice)
 scissor.addEventListener('click', getCompChoice)
 
 playAgain.addEventListener('click', resetPlayScreen)
+rulesButton.addEventListener('click', () => {
+  rulesContainer.style.display = 'block'
+})
+
+crossButton.addEventListener('click', () => {
+  rulesContainer.style.display = 'none'
+})
+
+nextButton.addEventListener('click', showWinnerPage)
 
 /**
  * JS stuff:
@@ -121,7 +141,7 @@ playAgain.addEventListener('click', resetPlayScreen)
  * Reset the screen when clicked on 'play again' button --> Done
  * On clicking the choices, js should display who won and who lost --> Done
  * On clicking the choices, js should update the counter if human won or if computer won --> Done
- * On clicking the rules button user should be able to view the rules and remove it if clicked on the cross button --> In progress
+ * On clicking the rules button user should be able to view the rules and remove it if clicked on the cross button --> Done
  * If user wins, then a next button should be visible beside the rules button otherwise it should be invisible --> Done
  * If user clicks on the next button then they should be redirected towards a victory page
  *
