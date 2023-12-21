@@ -21,11 +21,19 @@ const pcScoreDisplay = document
   .querySelector('.computer-score')
   .querySelector('h1')
 
-const victoryPage = document.getElementById('victory-page')
-const resetButton = document.getElementById('reset')
+if (localStorage.getItem('humanScore') === null) {
+  localStorage.setItem('humanScore', 0)
+}
 
-let humanScore = 0
-let computerScore = 0
+if (localStorage.getItem('computerScore') === null) {
+  localStorage.setItem('computerScore', 0)
+}
+
+let humanScore = parseInt(localStorage.getItem('humanScore'))
+humanScoreDisplay.innerText = `${localStorage.getItem('humanScore')}`
+let computerScore = parseInt(localStorage.getItem('computerScore'))
+pcScoreDisplay.innerText = `${localStorage.getItem('computerScore')}`
+
 const elementArr = []
 
 for (const child of parentContainer.children) {
@@ -62,48 +70,66 @@ function getCompChoice(e) {
     elementArr[randomElement] == 'scissors'
   ) {
     winOrlose.innerText = 'WIN'
-    humanScore++
-    humanScoreDisplay.innerText = `${humanScore}`
+    localStorage.setItem(
+      'humanScore',
+      parseInt(localStorage.getItem('humanScore')) + 1
+    )
+    humanScoreDisplay.innerText = `${localStorage.getItem('humanScore')}`
     nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'rock' &&
     elementArr[randomElement] == 'paper'
   ) {
     winOrlose.innerText = 'LOST'
-    computerScore++
-    pcScoreDisplay.innerText = `${computerScore}`
+    localStorage.setItem(
+      'computerScore',
+      parseInt(localStorage.getItem('computerScore')) + 1
+    )
+    pcScoreDisplay.innerText = `${localStorage.getItem('computerScore')}`
     nextButton.style.display = 'none'
   } else if (
     e.composedPath()[1].id == 'paper' &&
     elementArr[randomElement] == 'scissors'
   ) {
     winOrlose.innerText = 'LOST'
-    computerScore++
-    pcScoreDisplay.innerText = `${computerScore}`
+    localStorage.setItem(
+      'computerScore',
+      parseInt(localStorage.getItem('computerScore')) + 1
+    )
+    pcScoreDisplay.innerText = `${localStorage.getItem('computerScore')}`
     nextButton.style.display = 'none'
   } else if (
     e.composedPath()[1].id == 'paper' &&
     elementArr[randomElement] == 'rock'
   ) {
     winOrlose.innerText = 'WIN'
-    humanScore++
-    humanScoreDisplay.innerText = `${humanScore}`
+    localStorage.setItem(
+      'humanScore',
+      parseInt(localStorage.getItem('humanScore')) + 1
+    )
+    humanScoreDisplay.innerText = `${localStorage.getItem('humanScore')}`
     nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'scissors' &&
     elementArr[randomElement] == 'paper'
   ) {
     winOrlose.innerText = 'WIN'
-    humanScore++
-    humanScoreDisplay.innerText = `${humanScore}`
+    localStorage.setItem(
+      'humanScore',
+      parseInt(localStorage.getItem('humanScore')) + 1
+    )
+    humanScoreDisplay.innerText = `${localStorage.getItem('humanScore')}`
     nextButton.style.display = 'inline-block'
   } else if (
     e.composedPath()[1].id == 'scissors' &&
     elementArr[randomElement] == 'rock'
   ) {
     winOrlose.innerText = 'LOST'
-    computerScore++
-    pcScoreDisplay.innerText = `${computerScore}`
+    localStorage.setItem(
+      'computerScore',
+      parseInt(localStorage.getItem('computerScore')) + 1
+    )
+    pcScoreDisplay.innerText = `${localStorage.getItem('computerScore')}`
     nextButton.style.display = 'none'
   } else {
     winOrlose.innerText = 'TIED'
@@ -117,7 +143,7 @@ function resetPlayScreen() {
 }
 
 function showWinnerPage() {
-  window.location.href = 'index.html'
+  window.location.href = 'victory.html'
 }
 
 rock.addEventListener('click', getCompChoice)
@@ -134,24 +160,3 @@ crossButton.addEventListener('click', () => {
 })
 
 nextButton.addEventListener('click', showWinnerPage)
-
-/**
- * JS stuff:
- *
- * Reset the screen when clicked on 'play again' button --> Done
- * On clicking the choices, js should display who won and who lost --> Done
- * On clicking the choices, js should update the counter if human won or if computer won --> Done
- * On clicking the rules button user should be able to view the rules and remove it if clicked on the cross button --> Done
- * If user wins, then a next button should be visible beside the rules button otherwise it should be invisible --> Done
- * If user clicks on the next button then they should be redirected towards a victory page
- *
- * CSS stuff:
- *
- * Have to add the rules and next button. --> Done
- * Have to create a victory page with some basic animations.
- *
- * Menial stuff:
- *
- * Remove all the comments and console.log
- *
- */

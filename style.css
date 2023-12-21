@@ -230,6 +230,7 @@ main {
 
 #victory-page {
   text-align: center;
+  position: relative;
 }
 
 #victory-page > h1 {
@@ -253,4 +254,44 @@ main {
   border: none;
   border-radius: 0.3rem;
   margin-top: 2rem;
+}
+
+.star {
+  font-size: 4rem;
+  position: absolute;
+  color: grey;
+  animation: moveStarsUp infinite ease-in-out 2s;
+}
+
+.star-1 {
+  top: 0rem;
+  left: 0rem;
+}
+
+.star-2 {
+  top: -5rem;
+  left: 3rem;
+}
+
+.star-3 {
+  top: -6rem;
+  left: 9rem;
+}
+
+.star-4 {
+  top: -5rem;
+  left: 14.5rem;
+}
+
+.star-5 {
+  top: 0.5rem;
+  left: 16.5rem;
+}
+
+@keyframes moveStarsUp {
+  to {
+    top: -6rem;
+    left: 9rem;
+    opacity: 0;
+  }
 }
